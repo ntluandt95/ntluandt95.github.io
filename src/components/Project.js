@@ -11,9 +11,13 @@ const Project = () => {
     const fetchCards = async () => {
         const response = db.collection('Cards');
         const data = await response.get();
+        
         data.docs.forEach(item => {
-            setCards([...cards, item.data()])
+            cards.push(item.data())
+            //setCards([...cards, item.data()])
         })
+        setCards([...cards])
+        console.log(cards)
     }
     return (
         <div className='container'>
@@ -21,9 +25,12 @@ const Project = () => {
                 {
                     cards && cards.map(card => {
                         return (
+                            <>
                             <div class="col-sm-4">
                                 <Card name={card.name} img={card.img} github={card.github}/>
                             </div>
+                            
+                            </>
                         )
                     })
                 }

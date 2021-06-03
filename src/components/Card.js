@@ -9,7 +9,7 @@ const Card = ({name,img,github}) => {
                         <h4 class="my-0 font-weight-normal">{name}</h4>
                     </div>
                     <div>
-                        <img src={img} alt="Girl in a jacket" height='80%' width='100%'/>
+                        <img src={img} alt={name} height='250' width='100%'/>
                         
                         
                         <a href={github} class="btn btn-block btn-lg ">Github</a>
