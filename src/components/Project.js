@@ -1,22 +1,37 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from './Card'
-
+import db from '../firebase.config'
 const Project = () => {
+
+    const [cards, setCards] = useState([])
+    useEffect(() => {
+        fetchCards()
+    }, [])
+
+    const fetchCards = async () => {
+        const response = db.collection('Cards');
+        const data = await response.get();
+        data.docs.forEach(item => {
+            setCards([...cards, item.data()])
+        })
+    }
     return (
         <div className='container'>
             <div class="row">
-                <div class="col-sm-4">
-                    <Card/>
-                </div>
-                <div class="col-sm-4">
-                    <Card/>
-                </div>
-                <div class="col-sm-4">
-                    <Card/>
-                 </div>
-                 
+                {
+                    cards && cards.map(card => {
+                        return (
+                            <div class="col-sm-4">
+                                <Card name={card.name} img={card.img} github={card.github}/>
+                            </div>
+                        )
+                    })
+                }
+
+
+
             </div>
-            
+
         </div>
     )
 }
