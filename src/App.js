@@ -4,14 +4,18 @@ import './bootstrap.min.css'
 import Header from './components/Header';
 import About from './components/About';
 import Project from './components/Project';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Contact from './components/Contact';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <About/>
-      <Project/>
+      <Router>
+        <Header />
+        <Route path='/about' component={About} />
+        <Route path='/' component={Project} exact/>
+        <Route path='/contact' component={Contact} />
+      </Router>
     </div>
   );
 }

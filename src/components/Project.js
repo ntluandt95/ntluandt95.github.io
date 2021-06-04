@@ -11,7 +11,7 @@ const Project = () => {
     const fetchCards = async () => {
         const response = db.collection('Cards');
         const data = await response.get();
-        
+
         data.docs.forEach(item => {
             cards.push(item.data())
             //setCards([...cards, item.data()])
@@ -20,26 +20,32 @@ const Project = () => {
         console.log(cards)
     }
     return (
-        <div className='container'>
-            <div class="row">
-                {
-                    cards && cards.map(card => {
-                        return (
-                            <>
-                            <div class="col-sm-4">
-                                <Card name={card.name} img={card.img} github={card.github}/>
-                            </div>
-                            
-                            </>
-                        )
-                    })
-                }
+        <>
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4">Hey, I'm Thanh</h1>
+                <p class="lead">I'm a Full-stack Developer</p>
+            </div>
+            <div className='container'>
+                <div class="row">
+                    {
+                        cards && cards.map(card => {
+                            return (
+                                <>
+                                    <div class="col-sm-4">
+                                        <Card name={card.name} img={card.img} github={card.github} link={card.link} />
+                                    </div>
+
+                                </>
+                            )
+                        })
+                    }
 
 
+
+                </div>
 
             </div>
-
-        </div>
+        </>
     )
 }
 
