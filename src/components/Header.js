@@ -6,7 +6,7 @@ const Header = () => {
       <h5 className="my-0 mr-md-auto font-weight-normal">Liam Nguyen</h5>
       <nav className="my-2 my-md-0 mr-md-3">
         <Link to="/project" className="p-2 text-dark">
-          Projects
+          Personal Project
         </Link>
         <Link to="/about" className="p-2 text-dark">
           About
